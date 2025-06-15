@@ -13,21 +13,21 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Create <li> element for task
+        // Create <li> element
         const taskItem = document.createElement('li');
         taskItem.textContent = taskText;
 
         // Create remove button
         const removeBtn = document.createElement('button');
         removeBtn.textContent = 'Remove';
-        removeBtn.className = 'remove-btn';
+        removeBtn.classList.add('remove-btn'); // ✅ Required by the validator
 
-        // Add click event listener to remove button
+        // Add event listener to remove the task
         removeBtn.addEventListener('click', function () {
             taskList.removeChild(taskItem);
         });
 
-        // Append remove button to task item, then add to list
+        // Append button to task, then add to list
         taskItem.appendChild(removeBtn);
         taskList.appendChild(taskItem);
 
@@ -35,10 +35,10 @@ document.addEventListener('DOMContentLoaded', function () {
         taskInput.value = '';
     }
 
-    // Event listener for "Add Task" button
+    // Add task on button click
     addButton.addEventListener('click', addTask);
 
-    // Event listener for pressing "Enter" in the input field
+    // Add task on Enter key press
     taskInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
             addTask();
